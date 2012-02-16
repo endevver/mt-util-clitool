@@ -1,8 +1,6 @@
-### MT::App:CLI
-# AUTHOR:   Jay Allen, Endevver LLC (http://endevver.com)
-# See README.txt in this package for more details
-
 package MT::App::CLI;
+
+# See README.txt in this package for more details
 
 use strict;
 use warnings;

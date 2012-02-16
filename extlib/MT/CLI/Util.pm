@@ -1,5 +1,7 @@
 package MT::CLI::Util;
 
+# See README.txt in this package for more details
+
 use strict; use warnings; use Carp; use Data::Dumper;
 
 use MT::Log::Log4perl qw( l4mtdump ); use Log::Log4perl qw( :resurrect );

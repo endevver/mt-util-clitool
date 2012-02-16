@@ -1,14 +1,7 @@
-# MT::Bootstrap::CLI
-#
+package MT::Bootstrap::CLI;
+
 # A subclass of MT::Bootstrap which allows for command-line MT::Apps. See
 # README for further details.
-#
-# Author:   Jay Allen, Endevver LLC (http://endevver.com)
-# Date:     March 1st, 2007
-#
-# Released under the Artistic License
-
-package MT::Bootstrap::CLI;
 
 use strict;
 use FindBin qw($Bin);
