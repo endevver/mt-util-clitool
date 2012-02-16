@@ -103,6 +103,7 @@ sub init_debug_mode {
 sub pre_run {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
+    MT->set_instance($app);
     $app->SUPER::pre_run(@_);
     my $opt = $app->options();
     my $blog_param = defined $opt->{blog}       ? $opt->{blog}
