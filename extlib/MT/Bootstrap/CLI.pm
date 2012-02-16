@@ -40,24 +40,24 @@ sub import {
     $ENV{GATEWAY_INTERFACE} = 0;
 
     # Force DebugMode on if we detect a --debug flag and subsequent number
-    if ( join(' ', @ARGV) =~ m/\-\-debug\s+(\d+)/ ) {
-        my $debug_level = $1;
-        require MT;
-        printf "Temporarily bumping DebugMode from %d (%03b) to %d (%03b)\n",
-             $MT::DebugMode,
-             $MT::DebugMode, 
-             local $MT::DebugMode |= $debug_level,
-             $MT::DebugMode;
-
-         die "That was unexpected";
-         eval { 
-             use Devel::TraceMethods;
-             require MacLeod::Tool::BlogDelete;
-             Devel::TraceMethods->callback(
-                 MacLeod::Tool::BlogDelete->can('log_devel_tracemethods')
-             )
-         };
-    }
+    # if ( join(' ', @ARGV) =~ m/\-\-debug\s+(\d+)/ ) {
+    #     my $debug_level = $1;
+    #     require MT;
+    #     printf "Temporarily bumping DebugMode from %d (%03b) to %d (%03b)\n",
+    #          $MT::DebugMode,
+    #          $MT::DebugMode, 
+    #          local $MT::DebugMode |= $debug_level,
+    #          $MT::DebugMode;
+    # 
+    #      die "That was unexpected";
+    #      eval { 
+    #          use Devel::TraceMethods;
+    #          require MacLeod::Tool::BlogDelete;
+    #          Devel::TraceMethods->callback(
+    #              MacLeod::Tool::BlogDelete->can('log_devel_tracemethods')
+    #          )
+    #      };
+    # }
     $pkg->SUPER::import(@_) or return;
 }
 
