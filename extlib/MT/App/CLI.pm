@@ -41,7 +41,9 @@ sub init_request {
     $app->init_options(@_) or return;
     require CGI;
     $app->{query} = CGI->new({ %{$app->options} });
+    ###l4p $logger->debug('CGI query object initialized');    
     $app->SUPER::init_request( CGIObject => $app->{query} );
+    MT->set_instance($app);
     $app->{query};
 }
 
