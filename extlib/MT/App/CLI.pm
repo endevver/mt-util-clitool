@@ -63,12 +63,41 @@ sub init_options {
     $app->show_usage() if $opt{usage};
     $app->show_docs()  if $opt{help};
     $app->{options} = \%opt;
+    $app->init_debug_mode() if $opt{debug};
+    ###l4p $logger->debug('Im ehre');
 }
 
 sub init_plugins {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
     $app->SUPER::init_plugins(@_);
+}
+
+sub init_debug_mode {
+    my $app        = shift;
+    my $opt        = $app->options;
+    my $dbmode     = $app->config('DebugMode');
+    my $pkg_dbmode = $MT::DebugMode;
+
+    # print Dumper({
+    #     opt_debug      => $opt->{debug}, 
+    #     dbmode         => $dbmode, 
+    #     pkg_dbmode     => $pkg_dbmode,
+    #     dbmode_bin     => sprintf( "%03b", $dbmode), 
+    #     pkg_dbmode_bin => sprintf( "%03b", $pkg_dbmode),
+    #     appconfigdebugmode => $app->config->DebugMode,
+    # });
+
+    $dbmode |= $opt->{debug} if $opt->{debug};
+    # print 'dbmode '.__LINE__.' '.$dbmode."\n";
+    
+    $app->config('DebugMode', $dbmode );
+    # print '$app->config(DebugMode): '.__LINE__.' '.$app->config('DebugMode')."\n";
+
+    require MT;
+    $MT::DebugMode = $dbmode;
+    # print "\$MT::DebugMode ".__LINE__.": $MT::DebugMode\n";
+    # print '$app->config(DebugMode): '.__LINE__.' '.$app->config('DebugMode')."\n";
 }
 
 sub pre_run {
