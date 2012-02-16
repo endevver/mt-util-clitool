@@ -54,14 +54,15 @@ sub init_options {
         \%opt, $app->option_spec()
     );
     unless ( $opts_good ) {
-        print STDERR join( '', @{$app->{trace}} );
+        print STDERR join( '', @{ $app->{trace} } ) if $app->{trace};
         $app->show_usage({ -exitval => 2, -verbose => 0 });
     }
-    $app->show_usage() if $opt{usage};
-    $app->show_docs()  if $opt{help};
+    $app->show_usage()      if $opt{usage};
+    $app->show_docs()       if $opt{help};
     $app->{options} = \%opt;
     $app->init_debug_mode() if $opt{debug};
     ###l4p $logger->debug('Im ehre');
+    1;
 }
 
 sub init_plugins {

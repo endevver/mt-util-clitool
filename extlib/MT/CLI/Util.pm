@@ -17,7 +17,8 @@ sub load_by_name_or_id {
         $termkey           = ( $value =~ m{^\d+$} ) ? 'id' : 'name';
         $terms->{$termkey} = $value;
         my $obj            = $class->load( $terms );
-        ###l4p $logger->debug('Loaded object: ', $obj ? l4mtdump($obj) : 'NONE');
+        ###l4p $logger->debug("$class load terms: ", l4mtdump($terms));
+        ###l4p $logger->debug("Loaded $class object: ", $obj ? l4mtdump($obj) : 'NONE');
         return $obj if $obj;
     }
 
