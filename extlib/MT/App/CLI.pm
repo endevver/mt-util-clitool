@@ -10,7 +10,7 @@ use Getopt::Long qw( :config auto_version auto_help );
 use Pod::Usage;
 use base 'MT::App';
 
-our $VERSION = '3.1';
+our $VERSION = '3.1.1';
 
 use MT::Log::Log4perl qw(l4mtdump); use Log::Log4perl qw( :resurrect );
 ###l4p our $logger = MT::Log::Log4perl->new();
