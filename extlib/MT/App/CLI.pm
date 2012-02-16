@@ -22,7 +22,7 @@ $| = 1;
 use constant CONFIG => 'mt-config.cgi';
 
 sub option_spec {
-    return ('help|man!', 'usage|h!', 'verbose|v+' );
+    return ( 'debug|d:i', 'help|man!', 'usage|h!', 'verbose|v+' );
 }
 
 sub init {
