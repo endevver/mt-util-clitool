@@ -29,9 +29,6 @@ sub init {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
     $app->SUPER::init(@_) or return;
-    # $app->add_methods( 
-    #     'default' => \&mode_default
-    # );
     $app;
 }
 
@@ -71,6 +68,12 @@ sub init_plugins {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
     $app->SUPER::init_plugins(@_);
+}
+
+sub init_addons {
+    my $app = shift;
+    ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
+    $app->SUPER::init_addons(@_);
 }
 
 sub init_debug_mode {
