@@ -2,10 +2,16 @@ package MT::CLI::Util;
 
 # See README.txt in this package for more details
 
-use strict; use warnings; use Carp; use Data::Dumper;
-
-use MT::Log::Log4perl qw( l4mtdump ); use Log::Log4perl qw( :resurrect );
+use strict;
+use warnings;
+use Carp;
+use Data::Dumper;
+use Log::Log4perl qw( :resurrect );
+###l4p use MT::Log::Log4perl qw( l4mtdump ); 
 ###l4p our $logger ||= MT::Log::Log4perl->new(); $logger->trace();
+
+use MT::App::CLI ();
+use version 0.77; our $VERSION = $MT::App::CLI::VERSION;
 
 sub load_by_name_or_id {
     my ($self, $model, $value, $die) = @_;

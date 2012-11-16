@@ -4,10 +4,14 @@ package MT::Bootstrap::CLI;
 # README for further details.
 
 use strict;
-use FindBin qw($Bin);
+use warnings;
 use File::Spec;
-use File::Basename qw(dirname);
-use base qw( MT::Bootstrap );
+use FindBin         qw($Bin);
+use File::Basename  qw(dirname);
+use parent          qw( MT::Bootstrap );
+
+use MT::App::CLI ();
+use version 0.77; our $VERSION = $MT::App::CLI::VERSION;
 
 sub import {
     my $pkg = shift;

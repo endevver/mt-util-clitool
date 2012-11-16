@@ -9,11 +9,11 @@ use Carp qw(longmess);
 use Getopt::Long qw( :config auto_version auto_help );
 use Pod::Usage;
 use base 'MT::App';
-
-our $VERSION = '3.1.1';
-
-use MT::Log::Log4perl qw(l4mtdump); use Log::Log4perl qw( :resurrect );
+use Log::Log4perl qw( :resurrect );
+###l4p use MT::Log::Log4perl qw(l4mtdump);
 ###l4p our $logger = MT::Log::Log4perl->new();
+
+use version 0.77; our $VERSION = qv('v3.1.2');
 
 $| = 1;
 
@@ -59,7 +59,7 @@ sub init_options {
     $app->show_docs()       if $opt{help};
     $app->{options} = \%opt;
     $app->init_debug_mode() if $opt{debug};
-    ###l4p $logger->debug('Im ehre');
+    ###l4p $logger->debug('Completing '.__PACKAGE__.'::init_options');
     1;
 }
 
