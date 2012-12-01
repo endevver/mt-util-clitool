@@ -3,8 +3,10 @@ package MT::Bootstrap::CLI;
 # A subclass of MT::Bootstrap which allows for command-line MT::Apps. See
 # README for further details.
 
+use 5.010_001;
 use strict;
 use warnings;
+use mro 'c3';
 use File::Spec;
 use FindBin         qw($Bin);
 use File::Basename  qw(dirname);
@@ -55,7 +57,7 @@ sub import {
     #          )
     #      };
     # }
-    $pkg->SUPER::import(@_) or return;
+    $pkg->next::method(@_) or return;
 }
 
 1;

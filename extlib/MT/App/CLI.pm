@@ -2,8 +2,10 @@ package MT::App::CLI;
 
 # See README.txt in this package for more details
 
+use 5.010_001;
 use strict;
 use warnings;
+use mro 'c3';
 use Data::Dumper;
 use Carp qw(longmess);
 use Getopt::Long qw( :config auto_version auto_help );
@@ -26,7 +28,7 @@ sub option_spec {
 sub init {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
-    $app->SUPER::init(@_) or return;
+    $app->next::method(@_) or return;
     $app;
 }
 
@@ -37,7 +39,7 @@ sub init_request {
     require CGI;
     $app->{query} = CGI->new({ %{$app->options} });
     ###l4p $logger->debug('CGI query object initialized');    
-    $app->SUPER::init_request( CGIObject => $app->{query} );
+    $app->next::method( CGIObject => $app->{query} );
     MT->set_instance($app);
     $app->{query};
 }
@@ -66,13 +68,13 @@ sub init_options {
 sub init_plugins {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
-    $app->SUPER::init_plugins(@_);
+    $app->next::method(@_);
 }
 
 sub init_addons {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
-    $app->SUPER::init_addons(@_);
+    $app->next::method(@_);
 }
 
 sub init_debug_mode {
@@ -106,7 +108,7 @@ sub pre_run {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
     MT->set_instance($app);
-    $app->SUPER::pre_run(@_);
+    $app->next::method(@_);
     my $opt = $app->options();
     my $blog_param = defined $opt->{blog}       ? $opt->{blog}
                    : defined $opt->{blog_id}    ? $opt->{blog_id}
@@ -127,7 +129,7 @@ sub post_run {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
     $app->print(('OUTPUT-----'x10), "\n");
-    $app->SUPER::post_run(@_);
+    $app->next::method(@_);
     if ($app->{trace} &&
         (!defined $app->{warning_trace} || $app->{warning_trace})) {
         my $trace = '';
@@ -189,7 +191,7 @@ sub send_http_header { }
 
 sub takedown {
     my $app = shift;
-    $app->SUPER::takedown(@_);
+    $app->next::method(@_);
     $app->print("\n");
     return;
 }

@@ -2,6 +2,7 @@ package MT::CLI::Util;
 
 # See README.txt in this package for more details
 
+use 5.010_001;
 use strict;
 use warnings;
 use Carp;
