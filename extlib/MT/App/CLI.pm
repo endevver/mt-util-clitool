@@ -15,7 +15,7 @@ use base 'MT::App';
 ###l4p use MT::Log::Log4perl qw(l4mtdump);
 ###l4p our $logger = MT::Log::Log4perl->new();
 
-use version 0.77; our $VERSION = qv('v3.1.2');
+use version 0.77; our $VERSION = qv('v3.2.0');
 
 $| = 1;
 

@@ -4,6 +4,6 @@
 package MT::CLI;
 
 use MT::App::CLI ();
-use version 0.77; our $VERSION = qv('v3.1.2');
+use version 0.77; our $VERSION = qv('v3.2.0');
 
 1;
