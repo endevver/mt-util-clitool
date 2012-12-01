@@ -65,6 +65,16 @@ sub init_options {
     1;
 }
 
+sub run {
+    my $app = shift;
+    local $@;
+    my $out = eval { $app->next::method(@_) };
+    Carp::confess("'$@'") if defined $@;
+    Carp::confess('No output from run mode '.$app->mode) unless defined $out;
+    return "'$out'";
+}
+
+
 sub init_plugins {
     my $app = shift;
     ###l4p $logger ||= MT::Log::Log4perl->new(); $logger->trace();
