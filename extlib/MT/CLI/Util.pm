@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use Carp;
 use Data::Dumper;
-use Log::Log4perl qw( :resurrect );
+# use Log::Log4perl qw( :resurrect );
 ###l4p use MT::Log::Log4perl qw( l4mtdump ); 
 ###l4p our $logger ||= MT::Log::Log4perl->new(); $logger->trace();
 

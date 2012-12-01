@@ -11,7 +11,7 @@ use Carp qw(longmess);
 use Getopt::Long qw( :config auto_version auto_help );
 use Pod::Usage;
 use base 'MT::App';
-use Log::Log4perl qw( :resurrect );
+# use Log::Log4perl qw( :resurrect );
 ###l4p use MT::Log::Log4perl qw(l4mtdump);
 ###l4p our $logger = MT::Log::Log4perl->new();
 
